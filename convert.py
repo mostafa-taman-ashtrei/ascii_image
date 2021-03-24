@@ -35,6 +35,9 @@ class AsciiImage:
 
         print(ascii_image)
 
+        with open('ascii.txt', 'w') as f:
+            f.write(ascii_image)
+
 
 image_input = sys.argv[1]
 ascii_converter = AsciiImage(image_input)

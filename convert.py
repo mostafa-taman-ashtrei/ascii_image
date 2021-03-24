@@ -1,7 +1,8 @@
 from PIL import Image
 import sys
-
+import uuid
 from get_profile_pic import FindProfilePic
+from utils.create_dir import create_dir_if_none_exists
 
 ascii_chars = ['@', '#', 'S', '%', '?', '*', '-', '/', '!', '&', ':', ';']
 
@@ -37,7 +38,10 @@ class AsciiImage:
 
         print(ascii_image)
 
-        with open('ascii.txt', 'w') as f:
+        dirname = 'ascii'
+        create_dir_if_none_exists(dirname)
+
+        with open(f'{dirname}/{uuid.uuid4()}.txt', 'w') as f:
             f.write(ascii_image)
 
 

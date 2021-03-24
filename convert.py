@@ -1,6 +1,8 @@
 from PIL import Image
 import sys
 
+from get_profile_pic import FindProfilePic
+
 ascii_chars = ['@', '#', 'S', '%', '?', '*', '-', '/', '!', '&', ':', ';']
 
 
@@ -39,6 +41,13 @@ class AsciiImage:
             f.write(ascii_image)
 
 
-image_input = sys.argv[1]
-ascii_converter = AsciiImage(image_input)
-ascii_converter.convert()
+if sys.argv[1] == 'profile':
+    pic_finder = FindProfilePic(sys.argv[2])
+    image_input = pic_finder.get_pic()
+    ascii_converter = AsciiImage(image_input)
+    ascii_converter.convert()
+
+elif sys.argv[1] == 'custom':
+    image_input = sys.argv[2]
+    ascii_converter = AsciiImage(image_input)
+    ascii_converter.convert()
